@@ -5,11 +5,12 @@
  * @return {number}
  */
 var getMinDistance = function(nums, target, start) {
-    const result = [];
+    let min = Infinity;
     for(let i=0;i<nums.length;i++) {
         if (nums[i]==target) {
-            result.push(Math.abs(i-start));
+            const absVal = Math.abs(i-start);
+            if(absVal<min) min=absVal;
         }
     }
-    return result.toSorted((a,b) => a-b)[0];
+    return min;
 };
