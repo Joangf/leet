@@ -4,18 +4,14 @@
  * @return {boolean}
  */
 var canReach = function(arr, start) {
-    const visited = [];
-    if(arr[start]==0) return true;
-    visited.push(start);
-    const right = dfs(arr, start+arr[start], visited);
-    const left = dfs(arr, start-arr[start], visited);
-    return right||left;
+    const visited = new Set();
+    function dfs(arr, start) {
+        if(visited.has(start)) return false;
+        if(arr[start]==0) return true;
+        visited.add(start);
+        const right = dfs(arr, start+arr[start], visited);
+        const left = dfs(arr, start-arr[start], visited);
+        return right||left;
+    }
+    return dfs(arr,start);
 };
-function dfs(arr, start, visited) {
-    if(visited.includes(start)) return false;
-    if(arr[start]==0) return true;
-    visited.push(start);
-    const right = dfs(arr, start+arr[start], visited);
-    const left = dfs(arr, start-arr[start], visited);
-    return right||left;
-}
