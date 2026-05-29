@@ -9,18 +9,6 @@
  * }
  */
 class Solution {
-    public ListNode reverse(ListNode list) {
-        ListNode curr = list;
-        ListNode prev = null;
-        ListNode next = null;
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
-    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode result = new ListNode(0);
