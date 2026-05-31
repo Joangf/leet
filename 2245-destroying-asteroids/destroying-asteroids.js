@@ -5,9 +5,13 @@
  */
 var asteroidsDestroyed = function(mass, asteroids) {
     const sortedAsteroids = asteroids.toSorted((a, b) => a - b);
-    for(asteroid of sortedAsteroids) {
-        if(mass - asteroid >= 0) mass += asteroid;
-        else return false;
-    }
-    return true;
+    return sortedAsteroids.reduce((accu, curr) => {
+        if(mass - curr >= 0) {
+            mass += curr;
+            return accu && true;
+        }
+        else {
+            return accu && false;
+        }
+    }, true)
 };
