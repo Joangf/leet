@@ -11,7 +11,6 @@ var mapWordWeights = function (words, weights) {
             const index = word[i].charCodeAt(0) - 97;
             sum += weights[index];
         }
-        console.log(String.fromCharCode(122 - (sum % 26)));
         result += (String.fromCharCode(122 - (sum % 26)));
     }
     return result;
